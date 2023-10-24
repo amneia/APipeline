@@ -25,32 +25,18 @@ Counts_Matrix <- select(Counts_Matrix,append(CompareFile$Control,CompareFile$Tre
 
 
 ##DEGLists Object Construction
-group <- rep(c('control', 'treat'), each = (length(CompareFile$Control)))
-dgelist <- DGEList(counts = Counts_Matrix, group = group)
+coldata <- data.frame(condition = factor(rep(c('control', 'treat'), each = length(CompareFiles\$Control)), levels = c('control', 'treat')))
+dds <- DESeqDataSetFromMatrix(countData = raw_counts, colData = coldata, design= ~condition)
 
-#Low Expression Data Filtering
-keep <- rowSums(cpm(dgelist) > 1) >= 2
-dgelist <- dgelist[keep, , keep.lib.sizes = FALSE]
+#FoldChange Calculation
+dds1 <- DESeq(dds, fitType = 'mean', minReplicatesForReplace = 7, parallel = FALSE)
+res <- results(dds1, contrast = c('condition', 'treat', 'control'))
+res <- data.frame(res,stringsAsFactors = FALSE, check.names = FALSE)
 
-#Normalization
-dgelist_norm <- calcNormFactors(dgelist, method = 'TMM')
-
-#Variance multiplier calculation
-design <- model.matrix(~group)
-
-dge <- estimateDisp(dgelist_norm, design, robust = TRUE)
-
-fit <- glmFit(dge, design, robust = TRUE)
-lrt <- topTags(glmLRT(fit), n = nrow(dgelist$counts))
-lrt <-  as.data.frame(lrt)
-
-lrt <-  lrt[order(lrt$FDR, lrt$logFC, decreasing = c(FALSE, TRUE)), ]
-lrt[which(lrt$logFC >= 1 & lrt$FDR < 0.01),'sig'] <- 'up'
-
-lrt[which(lrt$logFC <= -1 & lrt$FDR < 0.01),'sig'] <- 'down'
-
-lrt[which(abs(lrt$logFC) <= 1 | lrt$FDR >= 0.01),'sig'] <- 'none'
-
-gene_diff_select <- subset(lrt, sig %in% c('up', 'down'))
-
-write.csv(gene_diff_select, file = "Diff_Genes_edgeR.csv")
+#Differential Expression Gene Filtering
+res <- res[order(res$padj, res$log2FoldChange, decreasing = c(FALSE, TRUE)),]
+res[which(res$log2FoldChange >= 1 & res$padj < 0.01),'sig'] <- 'up'
+res[which(res$log2FoldChange <= -1 & res$padj < 0.01),'sig'] <- 'down'
+res[which(abs(res$log2FoldChange) <= 1 | res$padj >= 0.01),'sig'] <- 'none'
+res_select <- subset(res1, sig %in% c('up', 'down'))
+write.csv(res1_select, file = "Diff_Genes_DEseq2.csv")
