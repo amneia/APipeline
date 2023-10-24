@@ -1,6 +1,6 @@
 # APipeline
 A Simple Process for Combined Methylation and Transcriptome Analysis
-##Introduction
+## Introduction
 
-##Quick Start
-##Transcriptome Analysis
+## Quick Start
+## Transcriptome Analysis
