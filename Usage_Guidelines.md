@@ -36,7 +36,7 @@
 #### Example for Methylation Analysis
 |Sample_ID|IP_Reads1|IP_Reads2|INPUT_Reads1|INPUT_Reads2|
 |---------|---------|---------|------------|------------|
-|Sample1|SampleDir/Sample1_R1.fq.gz|SampleDir/Sample1_R2.fq.gz|SampleDir/Barcode.txt|
-|Sample2|SampleDir/Sample2_R1.fq.gz|SampleDir/Sample2_R2.fq.gz|SampleDir/Barcode.txt|
-|Sample3|SampleDir/Sample3_R1.fq.gz|SampleDir/Sample3_R2.fq.gz|SampleDir/Barcode.txt|
-|Sample4|SampleDir/Sample4_R1.fq.gz|SampleDir/Sample4_R2.fq.gz|SampleDir/Barcode.txt|
+|Sample1|SampleDir/Sample1_IP_R1.fq.gz|SampleDir/Sample1_IP_R2.fq.gz|SampleDir/Sample1_INPUT_R1.fq.gz|SampleDir/Sample1_INPUT_R2.fq.gz|
+|Sample2|SampleDir/Sample2_IP_R1.fq.gz|SampleDir/Sample2_IP_R2.fq.gz|SampleDir/Sample2_INPUT_R1.fq.gz|SampleDir/Sample2_INPUT_R2.fq.gz|
+|Sample3|SampleDir/Sample3_IP_R1.fq.gz|SampleDir/Sample3_IP_R2.fq.gz|SampleDir/Sample3_INPUT_R1.fq.gz|SampleDir/Sample3_INPUT_R2.fq.gz|
+|Sample4|SampleDir/Sample4_IP_R1.fq.gz|SampleDir/Sample4_IP_R2.fq.gz|SampleDir/Sample4_INPUT_R1.fq.gz|SampleDir/Sample4_INPUT_R2.fq.gz|
