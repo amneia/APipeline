@@ -41,3 +41,20 @@ A Simple Process for Combined Methylation and Transcriptome Analysis
 |Sample3|SampleDir/Sample3_IP_R1.fq.gz|SampleDir/Sample3_IP_R2.fq.gz|SampleDir/Sample3_INPUT_R1.fq.gz|SampleDir/Sample3_INPUT_R2.fq.gz|
 |Sample4|SampleDir/Sample4_IP_R1.fq.gz|SampleDir/Sample4_IP_R2.fq.gz|SampleDir/Sample4_INPUT_R1.fq.gz|SampleDir/Sample4_INPUT_R2.fq.gz|
 
+### `--CompareFiles`
+#### Example
+|Control|Treat|
+|-------|-----|
+|Sample1|Sample3|
+|Sample2|Sample4|
+
+## Parameters
+Specify the parameters as follows:
+1. Edit the `nextflow.config`
+2. Specify on the command line
+```
+nextflow main.nf -c nextflow.config --Input_Fastq samplesheet.csv
+```
+
+
+###
