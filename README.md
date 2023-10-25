@@ -49,7 +49,18 @@ A Simple Process for Combined Methylation and Transcriptome Analysis
 |Sample2|Sample4|
 
 ## Parameters
-Specify the parameters as follows:
+### Default Parameters
+Software Version and Parameter Selection
+|Tools|Version|Parameters|
+|-----|-------|----------|
+|Qualty Control|
+|fastp|0.23.4|fastp -g -x -Q -p 20 -w 16 -i $Reads1 -o ${Sample_Name}_fastq_R1.fq.gz -I $Reads2 -O ${Sample_Name}_fastq_R2.fq.gz -h ${Sample_Name}.html|
+|FastQC|0.12.1|
+
+
+
+
+### Specify the parameters as follows:
 1. Edit the `nextflow.config`
 2. Specify on the command line
 ```
