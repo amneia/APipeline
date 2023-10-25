@@ -35,7 +35,7 @@
 
 #### Example for Methylation Analysis
 |Sample_ID|IP_Reads1|IP_Reads2|INPUT_Reads1|INPUT_Reads2|
-|---------|------|------|------------|
+|---------|---------|---------|------------|------------|
 |Sample1|SampleDir/Sample1_R1.fq.gz|SampleDir/Sample1_R2.fq.gz|SampleDir/Barcode.txt|
 |Sample2|SampleDir/Sample2_R1.fq.gz|SampleDir/Sample2_R2.fq.gz|SampleDir/Barcode.txt|
 |Sample3|SampleDir/Sample3_R1.fq.gz|SampleDir/Sample3_R2.fq.gz|SampleDir/Barcode.txt|
