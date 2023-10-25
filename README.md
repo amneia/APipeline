@@ -54,9 +54,10 @@ Software Version and Parameter Selection
 |Tools|Version|Parameters|
 |-----|-------|----------|
 |Qualty Control|
-|fastp|0.23.4|fastp -g -x -Q -p 20 -w 16 -i $Reads1 -o ${Sample_Name}_fastq_R1.fq.gz -I $Reads2 -O ${Sample_Name}_fastq_R2.fq.gz -h ${Sample_Name}.html|
-|FastQC|0.12.1|
-
+|--------------|
+|`fastp`|0.23.4|fastp -g -x -Q -p 20 -w 16 -i $Reads1 -o ${Sample_Name}_fastq_R1.fq.gz -I $Reads2 -O ${Sample_Name}_fastq_R2.fq.gz -h ${Sample_Name}.html|
+|`FastQC`|0.12.1|
+|
 
 
 
