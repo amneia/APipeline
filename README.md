@@ -56,7 +56,7 @@ Software Version and Parameter Selection
 
 |Tools|Version|Parameters|
 |-----|-------|----------|
-|Fastq Multx|1.4.2|`fastq-multx -B ${Barcode_File} -b ${Reads1} ${Reads2} -o %${Sample_ID}.R1_1.fq.gz -o %${Sample_ID}.R2_1.fq.gz > ${Sample_ID}_Fastq_Multx_Result_1.txt`<dr>`fastq-multx -B ${Barcode_File} -b ${Reads2} ${Reads1} -o %${Sample_ID}.R1_2.fq.gz -o %${Sample_ID}.R2_2.fq.gz > ${Sample_ID}_Fastq_Multx_Result_2.txt`
+|Fastq Multx|1.4.2|`fastq-multx -B ${Barcode_File} -b ${Reads1} ${Reads2} -o %${Sample_ID}.R1_1.fq.gz -o %${Sample_ID}.R2_1.fq.gz > ${Sample_ID}_Fastq_Multx_Result_1.txt`<br>`fastq-multx -B ${Barcode_File} -b ${Reads2} ${Reads1} -o %${Sample_ID}.R1_2.fq.gz -o %${Sample_ID}.R2_2.fq.gz > ${Sample_ID}_Fastq_Multx_Result_2.txt`
 
 
 * Quality Control
