@@ -61,6 +61,7 @@ Software Version and Parameter Selection
 |`FastQC`|0.12.1|
 
 * Alignment
+
 |Tools|Version|Parameters|
 |-----|-------|----------|
 |`hisat2`|2.2.1|`hisat2 --summary-file ${Sample_name}_aligned.txt -t -x ${params.Hisat2_index} -p ${task.cpu} -1 $Reads1 -2 $Reads2 -S ${Sample_Name}.sam`|
@@ -72,7 +73,8 @@ Software Version and Parameter Selection
 *PCR Duplication(Optional)
 |Tools|Version|Parameters|
 |-----|-------|----------|
-|`Samtools`|1.8|`samtools sort -n -@ ${task.cpu} ${IP_Bam} -o IP_${Sample_ID}_nsorted.bam/nsamtools fixmate -@ ${task.cpu} -m IP_${Sample_ID}_nsorted.bam IP_${Sample_ID}_fixmate.bam`|
+|`Samtools`|1.8|`samtools sort -n -@ ${task.cpu} ${IP_Bam} -o IP_${Sample_ID}_nsorted.bam`
+`samtools fixmate -@ ${task.cpu} -m IP_${Sample_ID}_nsorted.bam IP_${Sample_ID}_fixmate.bam`|
 
           samtools sort -@ ${task.cpu} IP_${Sample_ID}_fixmate.bam -o IP_${Sample_ID}_fixmatesorted.bam
           samtools markdup -r -@ ${task.cpu} IP_${Sample_ID}_fixmatesorted.bam IP_${Sample_ID}_rmdup.bam
