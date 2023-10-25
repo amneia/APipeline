@@ -73,7 +73,7 @@ Software Version and Parameter Selection
 *PCR Duplication(Optional)
 |Tools|Version|Parameters|
 |-----|-------|----------|
-|`Samtools`|1.8|`samtools sort -n -@ ${task.cpu} ${IP_Bam} -o IP_${Sample_ID}_nsorted.bam`
+|`Samtools`|1.8|`samtools sort -n -@ ${task.cpu} ${IP_Bam} -o IP_${Sample_ID}_nsorted.bam`<br>
 `samtools fixmate -@ ${task.cpu} -m IP_${Sample_ID}_nsorted.bam IP_${Sample_ID}_fixmate.bam`|
 
           samtools sort -@ ${task.cpu} IP_${Sample_ID}_fixmate.bam -o IP_${Sample_ID}_fixmatesorted.bam
