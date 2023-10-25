@@ -71,16 +71,10 @@ Software Version and Parameter Selection
 
 
 *PCR Duplication(Optional)
+
 |Tools|Version|Parameters|
 |-----|-------|----------|
-|`Samtools`|1.8|`samtools sort -n -@ ${task.cpu} ${IP_Bam} -o IP_${Sample_ID}_nsorted.bam`<br>`samtools fixmate -@ ${task.cpu} -m IP_${Sample_ID}_nsorted.bam IP_${Sample_ID}_fixmate.bam`|
-
-          samtools sort -@ ${task.cpu} IP_${Sample_ID}_fixmate.bam -o IP_${Sample_ID}_fixmatesorted.bam
-          samtools markdup -r -@ ${task.cpu} IP_${Sample_ID}_fixmatesorted.bam IP_${Sample_ID}_rmdup.bam
-          samtools sort -n -@ ${task.cpu} ${Input_Bam} -o Input_${Sample_ID}_nsorted.bam
-          samtools fixmate -@ ${task.cpu} -m Input_${Sample_ID}_nsorted.bam Input_${Sample_ID}_fixmate.bam
-          samtools sort -@ ${task.cpu} Input_${Sample_ID}_fixmate.bam -o Input_${Sample_ID}_fixmatesorted.bam
-          samtools markdup -r -@ ${task.cpu} Input_${Sample_ID}_fixmatesorted.bam Input_${Sample_ID}_rmdup.bam
+|`Samtools`|1.8|`samtools sort -n -@ ${task.cpu} ${Bam} -o ${Sample_Name}_nsorted.bam`<br>`samtools fixmate -@ ${task.cpu} -m ${Sample_Name}_nsorted.bam ${Sample_Name}_fixmate.bam`<br>`samtools sort -@ ${task.cpu} ${Sample_Name}_fixmate.bam -o ${Sample_Name}_fixmatesorted.bam`<br>`samtools markdup -r -@ ${task.cpu} IP_${Sample_Name}_fixmatesorted.bam IP_${Sample_Name}_rmdup.bam`|
 
 ### Specify the parameters as follows:
 1. Edit the `nextflow.config`
