@@ -52,13 +52,20 @@ A Simple Process for Combined Methylation and Transcriptome Analysis
 ### Default Parameters
 Software Version and Parameter Selection
 
+*Fastq Files Splitting(Optional)
+
+|Tools|Version|Parameters|
+|-----|-------|----------|
+|Fastq Multx|1.4.2|`fastq-multx -B ${Barcode_File} -b ${Reads1} ${Reads2} -o %${Sample_ID}.R1_1.fq.gz -o %${Sample_ID}.R2_1.fq.gz > ${Sample_ID}_Fastq_Multx_Result_1.txt`<dr>`fastq-multx -B ${Barcode_File} -b ${Reads2} ${Reads1} -o %${Sample_ID}.R1_2.fq.gz -o %${Sample_ID}.R2_2.fq.gz > ${Sample_ID}_Fastq_Multx_Result_2.txt`
+
+
 * Quality Control
 
 |Tools|Version|Parameters|
 |-----|-------|----------|
 |`fastp`|0.23.4|`fastp -g -x -Q -p 20 -w 16 -i $Reads1 -o ${Sample_Name}_fastq_R1.fq.gz -I $Reads2 -O ${Sample_Name}_fastq_R2.fq.gz -h ${Sample_Name}.html`|
 |`Trim Galore`|0.6.10|`trim_galore -q 25 --phred33 --stringency 3 --length 36 --fastqc --paired $Reads1 $Reads2 --gzip --basename ${Sample_Name} -o .`|
-|`FastQC`|0.12.1|
+|`FastQC`|0.12.1||
 
 * Alignment
 
@@ -75,6 +82,11 @@ Software Version and Parameter Selection
 |Tools|Version|Parameters|
 |-----|-------|----------|
 |`Samtools`|1.8|`samtools sort -n -@ ${task.cpu} ${Bam} -o ${Sample_Name}_nsorted.bam`<br>`samtools fixmate -@ ${task.cpu} -m ${Sample_Name}_nsorted.bam ${Sample_Name}_fixmate.bam`<br>`samtools sort -@ ${task.cpu} ${Sample_Name}_fixmate.bam -o ${Sample_Name}_fixmatesorted.bam`<br>`samtools markdup -r -@ ${task.cpu} IP_${Sample_Name}_fixmatesorted.bam IP_${Sample_Name}_rmdup.bam`|
+
+* Coverage & Saturation Analysis
+
+|Tools|Version|Parameters|
+|-----|-------|----------|
 
 ### Specify the parameters as follows:
 1. Edit the `nextflow.config`
