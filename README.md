@@ -81,12 +81,21 @@ Software Version and Parameter Selection
 
 |Tools|Version|Parameters|
 |-----|-------|----------|
-|`Samtools`|1.8|`samtools sort -n -@ ${task.cpu} ${Bam} -o ${Sample_Name}_nsorted.bam`<br>`samtools fixmate -@ ${task.cpu} -m ${Sample_Name}_nsorted.bam ${Sample_Name}_fixmate.bam`<br>`samtools sort -@ ${task.cpu} ${Sample_Name}_fixmate.bam -o ${Sample_Name}_fixmatesorted.bam`<br>`samtools markdup -r -@ ${task.cpu} IP_${Sample_Name}_fixmatesorted.bam IP_${Sample_Name}_rmdup.bam`|
+|`Samtools`|1.8|`samtools sort -n -@ ${task.cpu} $Bam -o ${Sample_Name}_nsorted.bam`<br>`samtools fixmate -@ ${task.cpu} -m ${Sample_Name}_nsorted.bam ${Sample_Name}_fixmate.bam`<br>`samtools sort -@ ${task.cpu} ${Sample_Name}_fixmate.bam -o ${Sample_Name}_fixmatesorted.bam`<br>`samtools markdup -r -@ ${task.cpu} IP_${Sample_Name}_fixmatesorted.bam IP_${Sample_Name}_rmdup.bam`|
 
-* Coverage & Saturation Analysis
+* Coverage Analysis
 
 |Tools|Version|Parameters|
 |-----|-------|----------|
+|`bedtools`|2.31.0|`bedtools coverage -a ${params.Coverage_bed_file} -b $Bam > ${Sample_Name}_Coverage.txt`|
+
+* Transcriptome Analysis
+
+|Tools|Version|Parameters|
+|-----|-------|----------|
+|`featureCounts`|2.0.6|`featureCounts -T ${task.cpu} -f -p -B -C -t gene -g gene_id -a ${params.GTF} -o ${Sample_Name}_counts.txt $Bam`|
+
+* Methylation Analysis
 
 ### Specify the parameters as follows:
 1. Edit the `nextflow.config`
