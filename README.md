@@ -53,6 +53,7 @@ A Simple Process for Combined Methylation and Transcriptome Analysis
 Software Version and Parameter Selection
 
 * Quality Control
+
 |Tools|Version|Parameters|
 |-----|-------|----------|
 |`fastp`|0.23.4|fastp -g -x -Q -p 20 -w 16 -i $Reads1 -o ${Sample_Name}_fastq_R1.fq.gz -I $Reads2 -O ${Sample_Name}_fastq_R2.fq.gz -h ${Sample_Name}.html|
