@@ -131,7 +131,7 @@ if ( params.skip_Diffexpression_Analysis ){
 
 
 //Module Importing
-include {Fastq_Splitting; Decode_Results; SampleNames; Fastq_Merge; Fastp; Trim_Galore; Hisat2Align; Coverage; Saturation; Saturation_PlotS; Saturation_PlotR; FeatureCounts;} from './modules/Upstream_Analysis'
+include {Fastq_Splitting; Decode_Results; SampleNames; Fastq_Merge; Fastp; Trim_Galore; FastQC; Hisat2Align; Coverage; Saturation; Saturation_PlotS; Saturation_PlotA; FeatureCounts;} from './modules/Upstream_Analysis'
 include {Expressed_Gene_Counts; Counts_Matrix_Build; DESeq2; edgeR} from './modules/Expression_Analysis'
 
 
@@ -163,7 +163,7 @@ workflow QC {
         main:
         Fastp(Raw_data)
         Trim_Galore(Fastp.out)
-
+        FastQC(Trim_Galore.out)
 
         emit:
         Align_Input=Trim_Galore.out[0]
