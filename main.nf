@@ -239,5 +239,4 @@ workflow {
                 }
         Align(QC.out.Align_Input)
         Gene_Quan(Align.out)
-        Diff_Express(Gene_Quan.out.collect())
 }
