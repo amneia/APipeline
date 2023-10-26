@@ -108,8 +108,8 @@ if ( params.Input_Fastq ) {
 if( params.skip_QC ){
         params.skip_Fastp                       = true
         params.skip_Trim_Galore                 = true
-        params.skip_Fastqc                      = true
-        params.skip_Multiqc                     = true
+        params.skip_FastQC                      = true
+        params.skip_MultiQC                     = true
 }
 if( params.skip_Alignment ){
         params.skip_Coverage                    = true
